@@ -1,11 +1,5 @@
 arr=[list(map(int,input().split())) for _ in range(9)]
-#어디가 비었는지 위치 반환하는 리스트
 empty_arr=[(i,j) for i in range(9) for j in range(9) if arr[i][j]==0]
-print(arr)
-print()
-print(empty_arr)
-
-
 
 def candidating(x,y):
     numbers=[i+1 for i in range(9)]
@@ -25,7 +19,7 @@ def DFS(count):
     if count==len(empty_arr):
         for row in arr:
             print(*row)
-        return
+        exit()
     (i,j)=empty_arr[count]
     candi=candidating(i,j)
     for num in candi:
