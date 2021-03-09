@@ -1,34 +1,31 @@
-n=int(input())
-arr=[list(map(int,input().split())) for _ in range(n)]
-print(arr)
-team_set={i for i in range(n)}
-s=[]
-empty=[]
-def solve(depth,count):
-  if depth == 2:
-    empty.extend(s)
-    return
-  for i in range(count, n):
-    if i in s:
-      continue
-    s.append(i)
-    solve(depth+1,count)
-    count += 1
-    s.pop()
-solve(0,0)
-team=[empty[i:i + 2] for i in range(0, len(empty), 2)]
-print(team)
+import sys
 
-def fin(team,em):
-  for i,j in team:
-    print(i,j)
-    k=arr[i][j]+arr[j][i]
-    print(em)
-    em.append(k)
-em=[]
-fin(team,em)
-min=abs(em[0]-em[1])
-for i in range(0,len(em)-1):
-  if min>abs(em[i]-em[i+1]):
-    min=abs(em[i]-em[i+1])
-print(min)
+input = sys.stdin.readline
+
+def dfs(idx, cnt):
+    global ans
+    if cnt == n // 2:
+        start, link = 0, 0
+        for i in range(n):
+            for j in range(n):
+                if select[i] and select[j]:
+                    start += a[i][j]
+                elif not select[i] and not select[j]:
+                    link += a[i][j]
+        ans = min(ans, abs(start - link))
+
+    for i in range(idx, n):
+        if select[i]:
+            continue
+        select[i] = 1
+        dfs(i + 1, cnt + 1)
+        select[i] = 0
+
+
+n = int(input())
+a = [list(map(int, input().split())) for _ in range(n)]
+
+select = [0 for _ in range(n)]
+ans = sys.maxsize
+dfs(0, 0)
+print(ans)
