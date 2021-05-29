@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 def heapify():
     for i in range(1, N):
         c = i
@@ -34,3 +35,16 @@ heapify()
 print(numbers)
 heap_sort()
 print(numbers)
+=======
+def filter(n):
+    if n<2:
+        return False
+    for i in range(2, n):
+        if(n%i==0):
+            return False
+    return True
+
+for i in range(int(input())+1):
+    if(filter(i)):
+        print(i)
+>>>>>>> b7ec4dcc454488091987978c0f608a8c0a2688d8
