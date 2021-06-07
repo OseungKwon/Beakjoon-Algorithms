@@ -1,11 +1,11 @@
-def hanoi(n,a,b,c):
+def hanoi(n,frm,to,otr):
     if n==1:
-        result.append([a,c])
-    else:
-        hanoi(n-1,a,c,b)
-        result.append([a,c])
-        hanoi(n-1,b,a,c)
-result=[]
-hanoi(int(input()),1,2,3)
-print(len(result))
-print("\n".join([' '.join(str(i3) for i in row)for row in result]))
+        print(frm,to)
+        return
+    hanoi(n-1,frm,otr,to)
+    print(frm,to)
+    hanoi(n-1,otr,to,frm)
+
+n=int(input())
+print((2**n)-1)
+hanoi(n,1,3,2)
