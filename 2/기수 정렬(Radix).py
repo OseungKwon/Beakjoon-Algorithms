@@ -10,17 +10,13 @@ def counting_sort(arr, digit):
 
     for i in range(1,10):
         count[i] += count[i-1]
-    print(count)
+        print(i, count[i])
     i=n-1
     while i>=0:
         index = int(arr[i]/digit)
         output[count[(index)%10]-1]=arr[i]
         count[(index)%10]-=1
         i-=1
-    print(count)
-    print('output', output)
-    for i in range(0, len(arr)):
-        arr[i] = output[i]
 
 def radix_sort(arr):
     maxValue = max(arr)
